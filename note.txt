@@ -9,3 +9,10 @@ When you run `cargo build --release`, Rust compiles your code with optimizations
 In short:  
 - **`cargo build`** → Fast compilation, slower execution (for development).  
 - **`cargo build --release`** → Slow compilation, faster execution (for final release).  
+
+Key Concepts Used:
+Constants (const) – Always immutable and require type annotations.
+Mutability (mut) – Allows modifying a variable.
+Shadowing – Reusing a variable name but changing its type or value.
+Tuples – Multiple values in one variable, accessed by destructuring.
+Arrays & Loops – Modifying arrays using a loop.
