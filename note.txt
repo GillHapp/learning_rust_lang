@@ -1,0 +1,12 @@
+We can create a project using cargo new.
+We can build a project using cargo build.
+We can build and run a project in one step using cargo run.
+We can build a project without producing a binary to check for errors using cargo check.
+Instead of saving the result of the build in the same directory as our code, Cargo stores it in the target/debug directory.
+
+When you run `cargo build --release`, Rust compiles your code with optimizations to make it run faster. However, this takes more time to compile compared to the default `cargo build`, which is used for development and compiles quickly but without optimizations.  
+
+In short:  
+- **`cargo build`** → Fast compilation, slower execution (for development).  
+- **`cargo build --release`** → Slow compilation, faster execution (for final release).  
+
