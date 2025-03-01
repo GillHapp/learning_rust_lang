@@ -5,6 +5,58 @@
 const MAX_LIMIT: i32 = 100; // Constant (must be typed and immutable)
 const PI: f64 = 3.1415926535;
 
+fn greet() {
+    println!("Hello, Rustacean!");
+}
+
+// 2. Function with parameters
+fn add(a: i32, b: i32) {
+    println!("Sum: {}", a + b);
+}
+
+// 3. Function with a return value
+fn multiply(a: i32, b: i32) -> i32 {
+    a * b // No semicolon means it's an implicit return
+}
+
+// 4. Function with an explicit return statement
+fn divide(a: f64, b: f64) -> f64 {
+    return a / b;
+}
+
+// 5. Function with multiple return values (using a tuple)
+fn swap(a: i32, b: i32) -> (i32, i32) {
+    (b, a)
+}
+
+// 6. Function with mutable reference parameter
+fn increase_by_ten(num: &mut i32) {
+    *num += 10;
+}
+
+// 7. Function using generic types
+fn generic_max<T: std::cmp::PartialOrd>(a: T, b: T) -> T {
+    if a > b { a } else { b }
+}
+
+// 8. Function with a closure as a parameter
+fn apply<F>(f: F, value: i32) -> i32
+where
+    F: Fn(i32) -> i32,
+{
+    f(value)
+}
+
+// 9. Function that returns another function (higher-order function)
+fn make_multiplier(multiplier: i32) -> impl Fn(i32) -> i32 {
+    move |x| x * multiplier
+}
+
+// 10. Recursive function (calls itself)
+fn factorial(n: u32) -> u32 {
+    if n == 0 { 1 } else { n * factorial(n - 1) }
+}
+
 fn main() {
     let mut x = 5; // Mutable variable
     println!("Initial value of x: {x}");
@@ -123,4 +175,39 @@ fn main() {
 
     // Using constants
     println!("Constant PI: {PI}");
+
+    // Calling basic functions
+    greet();
+    add(3, 5);
+
+    let result = multiply(4, 6);
+    println!("Multiplication result: {result}");
+
+    let quotient = divide(10.0, 2.0);
+    println!("Division result: {quotient}");
+
+    let (new_a, new_b) = swap(10, 20);
+    println!("Swapped values: new_a = {new_a}, new_b = {new_b}");
+
+    // Mutable reference example
+    let mut value = 15;
+    increase_by_ten(&mut value);
+    println!("Value after increase: {value}");
+
+    // Using generic function
+    let max_value = generic_max(10, 20);
+    println!("Max value: {max_value}");
+
+    // Using closures with a function
+    let square = |x: i32| x * x;
+    let squared_value = apply(square, 4);
+    println!("Squared value: {squared_value}");
+
+    // Using a function that returns a function
+    let triple = make_multiplier(3);
+    println!("Triple of 5: {}", triple(5));
+
+    // Recursive function call
+    let fact = factorial(5);
+    println!("Factorial of 5: {fact}");
 }

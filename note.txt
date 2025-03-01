@@ -22,3 +22,20 @@ If we don’t add the : u32 type annotation shown in the preceding code, Rust wi
 
 Scalar Types
 A scalar type represents a single value. Rust has four primary scalar types: integers, floating-point numbers, Booleans, and characters. You may recognize these from other programming languages. Let’s jump into how they work in Rust.
+
+Function 
+
+Statements are instructions that perform some action and do not return a value.
+Expressions evaluate to a resultant value.
+
+Types of Functions Demonstrated:
+Basic function (greet()) – No parameters, no return.
+Function with parameters (add(a, b)) – Takes input, prints result.
+Function with a return value (multiply(a, b)) – Returns a computed value.
+Function with an explicit return statement (divide(a, b)) – Uses return keyword.
+Function returning multiple values (swap(a, b)) – Uses tuples.
+Function with mutable reference (increase_by_ten(&mut num)) – Modifies an argument.
+Generic function (generic_max<T>(a, b)) – Works with multiple data types.
+Function taking a closure (apply(f, value)) – Accepts another function as input.
+Higher-order function (make_multiplier(multiplier)) – Returns a function.
+Recursive function (factorial(n)) – Calls itself to compute results.
