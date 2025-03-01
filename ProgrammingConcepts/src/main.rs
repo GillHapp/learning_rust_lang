@@ -110,6 +110,9 @@ fn main() {
         Custom(String),
     }
     let my_color = Color::Custom(String::from("Purple"));
+    let _red = Color::Red;
+    let _green = Color::Green;
+    let _blue = Color::Blue;
 
     match my_color {
         Color::Red => println!("Color: Red"),
