@@ -9,4 +9,3 @@ When you run `cargo build --release`, Rust compiles your code with optimizations
 In short:  
 - **`cargo build`** → Fast compilation, slower execution (for development).  
 - **`cargo build --release`** → Slow compilation, faster execution (for final release).  
-
