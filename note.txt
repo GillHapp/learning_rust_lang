@@ -16,3 +16,9 @@ Mutability (mut) – Allows modifying a variable.
 Shadowing – Reusing a variable name but changing its type or value.
 Tuples – Multiple values in one variable, accessed by destructuring.
 Arrays & Loops – Modifying arrays using a loop.
+
+let guess: u32 = "42".parse().expect("Not a number!");
+If we don’t add the : u32 type annotation shown in the preceding code, Rust will display the following error, which means the compiler needs more information from us to know which type we want to use:
+
+Scalar Types
+A scalar type represents a single value. Rust has four primary scalar types: integers, floating-point numbers, Booleans, and characters. You may recognize these from other programming languages. Let’s jump into how they work in Rust.
