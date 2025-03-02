@@ -50,6 +50,20 @@ fn square_root(number: f64) -> Result<f64, String> {
     }
 }
 
+#[derive(Debug)]
+enum UsState {
+    Alabama,
+    Alaska,
+    // --snip--
+}
+
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter(UsState),
+}
+
 fn main() {
     // 1️⃣ Enum for Directions
     let direction = Direction::Up;
@@ -85,4 +99,24 @@ fn main() {
         Ok(value) => println!("Square root: {}", value),
         Err(err) => println!("Error: {}", err),
     }
+
+    // 6️⃣ Enum with Multiple Variants for Error Handling and
+
+    let coin = Coin::Penny;
+    let mut count = 0;
+    match coin {
+        Coin::Quarter(state) => println!("State quarter from {state:?}!"),
+        _ => count += 1,
+    }
+
+    // another example of doing the same or alternate way
+
+    let mut count = 0;
+    if let Coin::Quarter(state) = coin {
+        println!("State quarter from {state:?}!");
+    } else {
+        count += 1;
+    }
+
+    
 }
