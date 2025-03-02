@@ -217,3 +217,55 @@ fn no_dangle() -> String {
 ✅ **References** must always be valid (Rust ensures no use-after-free errors).  
 
 🚀 **Mastering ownership, borrowing, and references will make you a Rust pro!** Do you need more examples or explanations? 😊
+
+
+### **`cargo init` vs `cargo new`** 🚀  
+
+Both `cargo init` and `cargo new` are used to set up a Rust project, but they have different purposes.
+
+---
+
+### **1️⃣ `cargo init` – Initialize an Existing Directory**
+🔹 **Use when you already have a folder and want to turn it into a Rust project.**  
+```sh
+cargo init
+```
+✅ Creates a `Cargo.toml` file  
+✅ Adds a `src/main.rs` file (if missing)  
+✅ Does **NOT** create a new directory  
+
+**Example:**  
+```sh
+mkdir my_project && cd my_project
+cargo init
+```
+📌 This will turn `my_project` into a Rust project.
+
+---
+
+### **2️⃣ `cargo new` – Create a New Project Directory**
+🔹 **Use when you want to create a brand-new project with its own folder.**  
+```sh
+cargo new my_project
+```
+✅ Creates a new directory `my_project/`  
+✅ Initializes it as a Rust project  
+✅ Adds `Cargo.toml` and `src/main.rs`  
+
+**Example Output:**
+```
+my_project/
+├── Cargo.toml
+└── src/
+    └── main.rs
+```
+
+---
+
+### **🚀 Key Difference**
+| Command        | Creates New Folder? | Use Case |
+|---------------|-----------------|-----------|
+| `cargo new`   | ✅ Yes           | Creating a brand-new project |
+| `cargo init`  | ❌ No            | Turning an existing folder into a Rust project |
+
+**📌 Use `cargo new` for fresh projects, and `cargo init` when working inside an existing directory.**  
