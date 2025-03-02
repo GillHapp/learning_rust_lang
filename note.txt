@@ -39,3 +39,17 @@ Generic function (generic_max<T>(a, b)) – Works with multiple data types.
 Function taking a closure (apply(f, value)) – Accepts another function as input.
 Higher-order function (make_multiplier(multiplier)) – Returns a function.
 Recursive function (factorial(n)) – Calls itself to compute results.
+
+
+🎯 Summary of Rust Control Flow
+Control Flow	Usage
+if, else if, else	Conditional execution
+if let	Match a single pattern concisely
+while	Loop while a condition is true
+while let	Loop while a pattern matches
+for	Iterate over ranges, arrays, and iterators
+loop	Infinite loop, exit with break
+match	Pattern matching (powerful alternative to if-else)
+break	Exit a loop
+continue	Skip an iteration
+Labeled loops ('label:)	Exit specific loops in nested loops

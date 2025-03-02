@@ -210,4 +210,111 @@ fn main() {
     // Recursive function call
     let fact = factorial(5);
     println!("Factorial of 5: {fact}");
+
+    // Control Flow
+
+    let number = 6;
+
+    if number % 4 == 0 {
+        println!("number is divisible by 4");
+    } else if number % 3 == 0 {
+        println!("number is divisible by 3");
+    } else if number % 2 == 0 {
+        println!("number is divisible by 2");
+    } else {
+        println!("number is not divisible by 4, 3, or 2");
+    }
+
+    let condition = true;
+    let number = if condition { 5 } else { 6 };
+
+    println!("The value of number is: {number}");
+
+    // if we do it like that
+
+    // let condition = true;
+
+    // let number = if condition { 5 } else { "six" };  // this is wrong because the types are different
+
+    // println!("The value of number is: {number}");
+
+    // Loops
+
+    // loop {
+    //     println!("again!");
+    // }                   // loop again and again and again and again
+
+    // let mut counter = 0;
+
+    // let result = loop {
+    //     counter += 1;
+
+    //     if counter == 10 {
+    //         break counter * 2;
+    //     }
+    // };
+
+    // println!("The result is {result}");
+
+    let mut count = 0;
+    'counting_up: loop {
+        println!("count = {count}");
+        let mut remaining = 10;
+
+        loop {
+            println!("remaining = {remaining}");
+            if remaining == 9 {
+                break;
+            }
+            if count == 2 {
+                break 'counting_up;
+            }
+            remaining -= 1;
+        }
+
+        count += 1;
+    }
+    println!("End count = {count}");
+
+    let number = 2;
+
+    match number {
+        1 => println!("One"),
+        2 => println!("Two"),
+        3 => println!("Three"),
+        _ => println!("Something else"), // _ means "anything else"
+    }
+
+    let num = 4;
+
+    match num {
+        1 | 2 => println!("One or Two"),    // Multiple matches
+        3..=5 => println!("Three to Five"), // Range match
+        _ => println!("Other"),
+    }
+
+    let point = (3, 5);
+
+    match point {
+        (0, y) => println!("On Y-axis at {y}"),
+        (x, 0) => println!("On X-axis at {x}"),
+        (x, y) => println!("Point at ({x}, {y})"),
+    }
+
+    let some_number = Some(5); // some_number is an Option<i32> with value Some(5)
+
+    if let Some(x) = some_number {
+        println!("Matched: {x}");
+    } else {
+        println!("No match");
+    }
+
+    // alternative solution
+
+    let some_number = Some(5);
+
+    match some_number {
+        Some(x) => println!("Matched: {x}"),
+        None => println!("No match"),
+    }
 }
