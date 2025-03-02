@@ -53,3 +53,34 @@ match	Pattern matching (powerful alternative to if-else)
 break	Exit a loop
 continue	Skip an iteration
 Labeled loops ('label:)	Exit specific loops in nested loops
+
+
+ Rules of Mutable Borrowing
+✔ Only one mutable reference at a time (prevents race conditions).
+✔ No immutable (&) and mutable (&mut) references at the same time.
+
+❌ This will cause an error:
+
+rust
+Copy
+Edit
+let mut s = String::from("hello");
+let r1 = &mut s;
+let r2 = &mut s; // ❌ ERROR: Second mutable borrow not allowed
+
+let mut s = String::from("hello");
+
+{
+    let r1 = &mut s; // ✅ Borrow only within this block
+}
+
+let r2 = &mut s; // ✅ Allowed because r1 is no longer used
+
+Summary of Ownership in Rust
+Concept	Explanation
+Ownership	Each value has one owner. When the owner goes out of scope, memory is freed.
+Move	Assigning a variable to another moves ownership (String).
+Clone	Creates a new copy instead of moving ownership.
+Borrowing (&)	Allows reading a value without taking ownership.
+Mutable Borrowing (&mut)	Allows modifying a value but only one mutable reference at a time.
+Slices (&[T])	References part of a collection without ownership transfer.

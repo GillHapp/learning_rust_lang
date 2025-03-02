@@ -1,0 +1,44 @@
+# Binaries and build artifacts
+target/
+**/target/
+
+# Executables
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Cargo lock file (optional, keep if you're building libraries)
+Cargo.lock
+
+# Rust debug and release builds
+debug/
+release/
+
+# IDE/editor-specific files
+*.rs.bk
+*.swp
+*.swo
+.idea/
+.vscode/
+*.iml
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Rust tests and benchmarks
+/tests/target/
+/benches/target/
+/examples/target/
+
+# Dependencies (if using local crates)
+vendor/
+
+# macOS-specific
+.DS_Store
+
+# Windows-specific
+Thumbs.db
+ehthumbs.db
