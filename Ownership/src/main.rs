@@ -51,6 +51,29 @@ fn main() {
     let word = first_word(&s);
 
     println!("First word: {}", word);
+
+    // slices
+
+    // converting string onto array of bytes with string.as_bytes() so that we can able to iterate over it
+
+    let my_string = String::from("hello world");
+
+    // `first_word` works on slices of `String`s, whether partial or whole
+    let word  = first_word(&my_string[0..6]);
+    let word = first_word(&my_string[..]);
+    // `first_word` also works on references to `String`s, which are equivalent
+    // to whole slices of `String`s
+    let word = first_word(&my_string);
+
+    let my_string_literal = "hello world";
+
+    // `first_word` works on slices of string literals, whether partial or whole
+    let word = first_word(&my_string_literal[0..6]);
+    let word = first_word(&my_string_literal[..]);
+
+    // Because string literals *are* string slices already,
+    // this works too, without the slice syntax!
+    let word = first_word(my_string_literal);
 }
 
 fn print_message(message: String) {
@@ -78,4 +101,17 @@ fn first_word(s: &str) -> &str {
     }
 
     &s // If no space found, return the whole string
+}
+// this is slices of bytes
+
+fn first_word(s: &str) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+
+    &s[..] // this is for return then whole string if there is no space in string
 }
