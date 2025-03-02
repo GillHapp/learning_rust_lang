@@ -104,14 +104,14 @@ fn first_word(s: &str) -> &str {
 }
 // this is slices of bytes
 
-fn first_word(s: &str) -> &str {
-    let bytes = s.as_bytes();
+// fn first_word(s: &str) -> &str {
+//     let bytes = s.as_bytes();
 
-    for (i, &item) in bytes.iter().enumerate() {
-        if item == b' ' {
-            return &s[0..i];
-        }
-    }
+//     for (i, &item) in bytes.iter().enumerate() {
+//         if item == b' ' {
+//             return &s[0..i];
+//         }
+//     }
 
-    &s[..] // this is for return then whole string if there is no space in string
-}
+//     &s[..] // this is for return then whole string if there is no space in string
+// }
