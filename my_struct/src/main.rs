@@ -5,6 +5,9 @@ struct User {
     sign_in_count: u64,
 }
 
+struct Color(i32, i32, i32);
+struct Point(i32, i32, i32);
+
 fn main() {
     // --snip--
 
@@ -19,4 +22,14 @@ fn main() {
         email: String::from("another@example.com"),
         ..user1
     };
+
+
+    // Using Tuple Structs Without Named Fields to Create Different Types
+
+    let black = Color(0, 0, 0);
+    let origin = Point(0, 0, 0);
+    println!("Black color: ({}, {}, {})", black.0, black.1, black.2);
+   
+
+
 }
