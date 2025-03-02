@@ -8,6 +8,11 @@ struct User {
 struct Color(i32, i32, i32);
 struct Point(i32, i32, i32);
 
+
+// unit like struct
+
+struct UnitLikeStruct;
+
 fn main() {
     // --snip--
 
@@ -30,6 +35,12 @@ fn main() {
     let origin = Point(0, 0, 0);
     println!("Black color: ({}, {}, {})", black.0, black.1, black.2);
    
+
+
+    // Unit-Like Structs Without Any Fields
+       
+    let unit_like_struct = UnitLikeStruct;
+
 
 
 }
