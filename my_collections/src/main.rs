@@ -3,7 +3,9 @@
 //     name: String,
 //     age: u32,
 // }
+// hashmap
 
+use std::collections::HashMap;
 fn main() {
     // println!("Hello, world!");
     // let mut numbers: Vec<i32> = Vec::new(); // Create an empty vector
@@ -68,56 +70,99 @@ fn main() {
 
     // strings in rust
 
-    let mut s = String::new(); // Creates an empty string
-    s.push_str("Hello, Rust!"); // Adding text
-    println!("{}", s); // Output: Hello, Rust!
+    // let mut s = String::new(); // Creates an empty string
+    // s.push_str("Hello, Rust!"); // Adding text
+    // println!("{}", s); // Output: Hello, Rust!
 
-    let s = "Hello".to_string();
-    println!("{}", s); // Output: Hello
+    // let s = "Hello".to_string();
+    // println!("{}", s); // Output: Hello
 
-    let s = String::from("Rust is awesome!");
-    println!("{}", s);
+    // let s = String::from("Rust is awesome!");
+    // println!("{}", s);
 
-    let s: &str = "This is a string slice";
-    println!("{}", s);
+    // let s: &str = "This is a string slice";
+    // println!("{}", s);
 
-    let mut s = String::from("Hello");
-    s.push('!'); // Appends a single character
-    println!("{}", s); // Output: Hello!
+    // let mut s = String::from("Hello");
+    // s.push('!'); // Appends a single character
+    // println!("{}", s); // Output: Hello!
 
-    let mut s = String::from("Hello");
-    s.push_str(" Rust!"); // Appends a string
-    println!("{}", s); // Output: Hello Rust!
+    // let mut s = String::from("Hello");
+    // s.push_str(" Rust!"); // Appends a string
+    // println!("{}", s); // Output: Hello Rust!
 
-    let s1 = String::from("Hello");
-    let s2 = String::from(" Rust");
-    let s3 = s1 + &s2; // s1 is moved and can't be used anymore
-    println!("{}", s3); // Output: Hello Rust
+    // let s1 = String::from("Hello");
+    // let s2 = String::from(" Rust");
+    // let s3 = s1 + &s2; // s1 is moved and can't be used anymore
+    // println!("{}", s3); // Output: Hello Rust
 
-    let s1 = String::from("Hello");
-    let s2 = String::from("Rust");
-    let s3 = format!("{} {}", s1, s2); // Doesn't take ownership
-    println!("{}", s3); // Output: Hello Rust
+    // let s1 = String::from("Hello");
+    // let s2 = String::from("Rust");
+    // let s3 = format!("{} {}", s1, s2); // Doesn't take ownership
+    // println!("{}", s3); // Output: Hello Rust
 
-    let s = String::from("Hello");
-    for c in s.chars() {
-        println!("{}", c);
+    // let s = String::from("Hello");
+    // for c in s.chars() {
+    //     println!("{}", c);
+    // }
+
+    // let s = String::from("Hello");
+    // for b in s.bytes() {
+    //     println!("{}", b);
+    // }
+
+    // let s = String::from("Hello, Rust!");
+    // let slice = &s[0..5]; // "Hello"
+    // println!("{}", slice);
+
+    // let s = String::from("Rust");
+    // print_string(&s); // Borrowing (No Ownership Transfer)
+    // println!("{}", s); // Still usable
+
+    let mut scores = HashMap::new();
+
+    scores.insert(String::from("Alice"), 90);
+    scores.insert(String::from("Bob"), 85);
+
+    println!("{:?}", scores);
+
+    let names = vec!["Alice", "Bob"];
+    let scores = vec![90, 85];
+
+    let scores_map: HashMap<_, _> = names.iter().zip(scores.iter()).collect();
+    println!("{:?}", scores_map);
+
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Alice"), 90);
+
+    let score = scores.get("Alice"); // Returns an Option<&i32>
+    match score {
+        Some(value) => println!("Alice's score: {}", value),
+        None => println!("No score found"),
     }
 
-    let s = String::from("Hello");
-    for b in s.bytes() {
-        println!("{}", b);
+    for (key, value) in &scores {
+        println!("{}: {}", key, value);
     }
 
-    let s = String::from("Hello, Rust!");
-    let slice = &s[0..5]; // "Hello"
-    println!("{}", slice);
+    scores.insert(String::from("Alice"), 95);
+    println!("{:?}", scores);
 
-    let s = String::from("Rust");
-    print_string(&s); // Borrowing (No Ownership Transfer)
-    println!("{}", s); // Still usable
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Alice"), 90);
+    println!("{:?}", scores);
+    scores.entry(String::from("Bob")).or_insert(85);
+    scores.entry(String::from("Alice")).or_insert(100); // Won't change since "Alice" exists
+
+    println!("{:?}", scores); // {"Alice": 90, "Bob": 85}
+
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Alice"), 90);
+    scores.remove("Alice");
+
+    println!("{:?}", scores); // Output: {}
 }
 
-fn print_string(s: &String) {
-    println!("{}", s);
-}
+// fn print_string(s: &String) {
+//     println!("{}", s);
+// }
