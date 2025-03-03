@@ -202,11 +202,11 @@ fn no_dangle() -> String {
 ---
 
 # **🔹 Summary of All Rules**
-| **Concept** | **Rules** |
-|------------|----------|
-| **Ownership** | 1. Each value has only **one owner**. <br> 2. When the owner goes out of scope, the value is **dropped**. <br> 3. Ownership can be **moved** (transferred to another variable). <br> 4. Values that implement `Copy` can be **duplicated** instead of moved. |
-| **Borrowing** | 1. Immutable references (`&T`) allow **multiple** borrows. <br> 2. Mutable references (`&mut T`) allow **only one borrow at a time**. <br> 3. Cannot mix **mutable and immutable references** at the same time. <br> 4. A borrowed value must always be **valid**. |
-| **References** | 1. References must **not outlive** the data they refer to. <br> 2. Cannot return a reference to a value that goes out of scope. <br> 3. String slices and array slices allow **safe, partial access**. |
+| **Concept**    | **Rules**                                                                                                                                                                                                                                                          |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Ownership**  | 1. Each value has only **one owner**. <br> 2. When the owner goes out of scope, the value is **dropped**. <br> 3. Ownership can be **moved** (transferred to another variable). <br> 4. Values that implement `Copy` can be **duplicated** instead of moved.       |
+| **Borrowing**  | 1. Immutable references (`&T`) allow **multiple** borrows. <br> 2. Mutable references (`&mut T`) allow **only one borrow at a time**. <br> 3. Cannot mix **mutable and immutable references** at the same time. <br> 4. A borrowed value must always be **valid**. |
+| **References** | 1. References must **not outlive** the data they refer to. <br> 2. Cannot return a reference to a value that goes out of scope. <br> 3. String slices and array slices allow **safe, partial access**.                                                             |
 
 ---
 
@@ -263,9 +263,15 @@ my_project/
 ---
 
 ### **🚀 Key Difference**
-| Command        | Creates New Folder? | Use Case |
-|---------------|-----------------|-----------|
-| `cargo new`   | ✅ Yes           | Creating a brand-new project |
-| `cargo init`  | ❌ No            | Turning an existing folder into a Rust project |
+| Command      | Creates New Folder? | Use Case                                       |
+| ------------ | ------------------- | ---------------------------------------------- |
+| `cargo new`  | ✅ Yes               | Creating a brand-new project                   |
+| `cargo init` | ❌ No                | Turning an existing folder into a Rust project |
 
 **📌 Use `cargo new` for fresh projects, and `cargo init` when working inside an existing directory.**  
+
+🚀 Summary
+✅ Use Result<T, E> for recoverable errors
+✅ Use panic! for unrecoverable errors
+✅ Use .expect("error message") instead of .unwrap()
+✅ Use ? for error propagation in Result<T, E> functions
