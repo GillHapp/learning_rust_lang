@@ -27,16 +27,51 @@
 //     cat.speak(); // Output: Meow! 🐱
 // }
 
-trait Greet {
-    fn greet(&self) {
-        println!("Hello! 👋");
+// trait Greet {
+//     fn greet(&self) {
+//         println!("Hello! 👋");
+//     }
+// }
+
+// struct Human;
+// impl Greet for Human {} // Uses the default implementation
+
+// fn main() {
+//     let person = Human;
+//     person.greet(); // Output: Hello! 👋
+// }
+
+trait Show {
+    fn show(&self);
+}
+
+struct Number(i32);
+struct Stringy(String);
+
+impl Show for Number {
+    fn show(&self) {
+        println!("Number: {}", self.0);
+    }
+}
+impl Show for Stringy {
+    fn show(&self) {
+        println!("String: {}", self.0);
     }
 }
 
-struct Human;
-impl Greet for Human {} // Uses the default implementation
+// Function that only accepts types implementing Show
+fn print_value<T: Show>(item: T) {
+    item.show();
+}
 
 fn main() {
-    let person = Human;
-    person.greet(); // Output: Hello! 👋
+    let num = Number(42);
+    let str = Stringy("Hello, Rust!".to_string());
+
+    print_value(num); // Output: Number: 42
+    print_value(str); // Output: String: Hello, Rust!
 }
+// fn main() {
+//     let num = Number(42);
+//     print_value(num); // Output: Number: 42
+// }
