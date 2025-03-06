@@ -41,37 +41,71 @@
 //     person.greet(); // Output: Hello! 👋
 // }
 
-trait Show {
-    fn show(&self);
-}
+// trait Show {
+//     fn show(&self);
+// }
 
-struct Number(i32);
-struct Stringy(String);
+// struct Number(i32);
+// struct Stringy(String);
 
-impl Show for Number {
-    fn show(&self) {
-        println!("Number: {}", self.0);
-    }
-}
-impl Show for Stringy {
-    fn show(&self) {
-        println!("String: {}", self.0);
-    }
-}
+// impl Show for Number {
+//     fn show(&self) {
+//         println!("Number: {}", self.0);
+//     }
+// }
+// impl Show for Stringy {
+//     fn show(&self) {
+//         println!("String: {}", self.0);
+//     }
+// }
 
 // Function that only accepts types implementing Show
-fn print_value<T: Show>(item: T) {
-    item.show();
-}
+// fn print_value<T: Show>(item: T) {
+//     item.show();
+// }
+// fn print_value(item: impl Show) {
+//     item.show();
+// }
 
-fn main() {
-    let num = Number(42);
-    let str = Stringy("Hello, Rust!".to_string());
+// fn main() {
+//     let num = Number(42);
+//     let str = Stringy("Hello, Rust!".to_string());
 
-    print_value(num); // Output: Number: 42
-    print_value(str); // Output: String: Hello, Rust!
-}
+//     print_value(num); // Output: Number: 42
+//     print_value(str); // Output: String: Hello, Rust!
+// }
 // fn main() {
 //     let num = Number(42);
 //     print_value(num); // Output: Number: 42
 // }
+
+trait A {
+    fn a_method(&self);
+}
+
+trait B {
+    fn b_method(&self);
+}
+
+struct Example;
+impl A for Example {
+    fn a_method(&self) {
+        println!("A method");
+    }
+}
+impl B for Example {
+    fn b_method(&self) {
+        println!("B method");
+    }
+}
+
+// Function requiring both A and B traits
+fn use_both<T: A + B>(item: T) {
+    item.a_method();
+    item.b_method();
+}
+
+fn main() {
+    let ex = Example;
+    use_both(ex);
+}
