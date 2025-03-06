@@ -187,28 +187,55 @@
 //     }
 // }
 
-trait Printable {
-    fn print(&self);
+// trait Printable {
+//     fn print(&self);
+// }
+
+// struct Wrapper<T: Printable> {
+//     item: T,
+// }
+
+// impl<T: Printable> Wrapper<T> {
+//     fn show(&self) {
+//         self.item.print();
+//     }
+// }
+
+// struct Number(i32);
+// impl Printable for Number {
+//     fn print(&self) {
+//         println!("Number: {}", self.0);
+//     }
+// }
+
+// fn main() {
+//     let wrapped = Wrapper { item: Number(10) };
+//     wrapped.show(); // Output: Number: 10
+// }
+
+trait A {
+    fn a_method(&self);
 }
 
-struct Wrapper<T: Printable> {
-    item: T,
+trait B: A {
+    fn b_method(&self);
 }
 
-impl<T: Printable> Wrapper<T> {
-    fn show(&self) {
-        self.item.print();
+struct Example;
+impl A for Example {
+    fn a_method(&self) {
+        println!("A method");
     }
 }
 
-struct Number(i32);
-impl Printable for Number {
-    fn print(&self) {
-        println!("Number: {}", self.0);
+impl B for Example {
+    fn b_method(&self) {
+        println!("B method");
     }
 }
 
 fn main() {
-    let wrapped = Wrapper { item: Number(10) };
-    wrapped.show(); // Output: Number: 10
+    let ex = Example;
+    ex.a_method(); // Works because B requires A
+    ex.b_method();
 }
