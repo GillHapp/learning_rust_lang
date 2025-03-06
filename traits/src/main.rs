@@ -79,33 +79,83 @@
 //     print_value(num); // Output: Number: 42
 // }
 
-trait A {
-    fn a_method(&self);
+// trait A {
+//     fn a_method(&self);
+// }
+
+// trait B {
+//     fn b_method(&self);
+// }
+
+// struct Example;
+// impl A for Example {
+//     fn a_method(&self) {
+//         println!("A method");
+//     }
+// }
+// impl B for Example {
+//     fn b_method(&self) {
+//         println!("B method");
+//     }
+// }
+
+// // Function requiring both A and B traits
+// fn use_both<T: A + B>(item: T) {
+//     item.a_method();
+//     item.b_method();
+// }
+
+// fn main() {
+//     let ex = Example;
+//     use_both(ex);
+// }
+
+trait Create {
+    fn create(name: &str) -> Self;
+    fn describe(&self);
 }
 
-trait B {
-    fn b_method(&self);
+struct Thing {
+    name: String,
 }
 
-struct Example;
-impl A for Example {
-    fn a_method(&self) {
-        println!("A method");
+impl Create for Thing {
+    fn create(name: &str) -> Self {
+        Thing {
+            name: name.to_string(),
+        }
+    }
+
+    fn describe(&self) {
+        println!("This is a Thing named '{}'.", self.name);
     }
 }
-impl B for Example {
-    fn b_method(&self) {
-        println!("B method");
+
+struct AnotherThing {
+    id: u32,
+}
+
+impl Create for AnotherThing {
+    fn create(name: &str) -> Self {
+        AnotherThing {
+            id: name.len() as u32, // Just an example, using name length as ID
+        }
+    }
+
+    fn describe(&self) {
+        println!("This is AnotherThing with ID {}.", self.id);
     }
 }
 
-// Function requiring both A and B traits
-fn use_both<T: A + B>(item: T) {
-    item.a_method();
-    item.b_method();
+// Factory function that can return different types
+fn create_object<T: Create>(name: &str) -> T {
+    T::create(name)
 }
 
 fn main() {
-    let ex = Example;
-    use_both(ex);
+    let thing = create_object::<Thing>("MyThing");
+    thing.describe();
+
+    let another_thing = create_object::<AnotherThing>("Object123");
+    another_thing.describe();
 }
