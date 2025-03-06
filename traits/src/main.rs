@@ -160,29 +160,55 @@
 //     another_thing.describe();
 // }
 
-trait Animal {
-    fn make_sound(&self);
+// trait Animal {
+//     fn make_sound(&self);
+// }
+
+// struct Dog;
+// struct Cat;
+
+// impl Animal for Dog {
+//     fn make_sound(&self) {
+//         println!("Woof! 🐶");
+//     }
+// }
+
+// impl Animal for Cat {
+//     fn make_sound(&self) {
+//         println!("Meow! 🐱");
+//     }
+// }
+
+// fn main() {
+//     let animals: Vec<Box<dyn Animal>> = vec![Box::new(Dog), Box::new(Cat)];
+
+//     for animal in animals {
+//         animal.make_sound();
+//     }
+// }
+
+trait Printable {
+    fn print(&self);
 }
 
-struct Dog;
-struct Cat;
+struct Wrapper<T: Printable> {
+    item: T,
+}
 
-impl Animal for Dog {
-    fn make_sound(&self) {
-        println!("Woof! 🐶");
+impl<T: Printable> Wrapper<T> {
+    fn show(&self) {
+        self.item.print();
     }
 }
 
-impl Animal for Cat {
-    fn make_sound(&self) {
-        println!("Meow! 🐱");
+struct Number(i32);
+impl Printable for Number {
+    fn print(&self) {
+        println!("Number: {}", self.0);
     }
 }
 
 fn main() {
-    let animals: Vec<Box<dyn Animal>> = vec![Box::new(Dog), Box::new(Cat)]; 
-
-    for animal in animals {
-        animal.make_sound();
-    }
+    let wrapped = Wrapper { item: Number(10) };
+    wrapped.show(); // Output: Number: 10
 }
