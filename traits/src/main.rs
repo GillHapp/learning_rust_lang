@@ -110,52 +110,79 @@
 //     use_both(ex);
 // }
 
-trait Create {
-    fn create(name: &str) -> Self;
-    fn describe(&self);
+// trait Create {
+//     fn create(name: &str) -> Self;
+//     fn describe(&self);
+// }
+
+// struct Thing {
+//     name: String,
+// }
+
+// impl Create for Thing {
+//     fn create(name: &str) -> Self {
+//         Thing {
+//             name: name.to_string(),
+//         }
+//     }
+
+//     fn describe(&self) {
+//         println!("This is a Thing named '{}'.", self.name);
+//     }
+// }
+
+// struct AnotherThing {
+//     id: u32,
+// }
+
+// impl Create for AnotherThing {
+//     fn create(name: &str) -> Self {
+//         AnotherThing {
+//             id: name.len() as u32, // Just an example, using name length as ID
+//         }
+//     }
+
+//     fn describe(&self) {
+//         println!("This is AnotherThing with ID {}.", self.id);
+//     }
+// }
+
+// // Factory function that can return different types
+// fn create_object<T: Create>(name: &str) -> T {
+//     T::create(name)
+// }
+
+// fn main() {
+//     let thing = create_object::<Thing>("MyThing");
+//     thing.describe();
+
+//     let another_thing = create_object::<AnotherThing>("Object123");
+//     another_thing.describe();
+// }
+
+trait Animal {
+    fn make_sound(&self);
 }
 
-struct Thing {
-    name: String,
-}
+struct Dog;
+struct Cat;
 
-impl Create for Thing {
-    fn create(name: &str) -> Self {
-        Thing {
-            name: name.to_string(),
-        }
+impl Animal for Dog {
+    fn make_sound(&self) {
+        println!("Woof! 🐶");
     }
-
-    fn describe(&self) {
-        println!("This is a Thing named '{}'.", self.name);
-    }
 }
 
-struct AnotherThing {
-    id: u32,
-}
-
-impl Create for AnotherThing {
-    fn create(name: &str) -> Self {
-        AnotherThing {
-            id: name.len() as u32, // Just an example, using name length as ID
-        }
+impl Animal for Cat {
+    fn make_sound(&self) {
+        println!("Meow! 🐱");
     }
-
-    fn describe(&self) {
-        println!("This is AnotherThing with ID {}.", self.id);
-    }
-}
-
-// Factory function that can return different types
-fn create_object<T: Create>(name: &str) -> T {
-    T::create(name)
 }
 
 fn main() {
-    let thing = create_object::<Thing>("MyThing");
-    thing.describe();
+    let animals: Vec<Box<dyn Animal>> = vec![Box::new(Dog), Box::new(Cat)]; 
 
-    let another_thing = create_object::<AnotherThing>("Object123");
-    another_thing.describe();
+    for animal in animals {
+        animal.make_sound();
+    }
 }
