@@ -18,4 +18,13 @@ fn main() {
     }
 
     println!("{:?}", numbers); // Output: [2, 4, 6]
+
+
+    let numbers = vec![1, 2, 3];
+
+    for num in numbers.into_iter() {
+        println!("{}", num);
+    }
+
+    // println!("{:?}", numbers); ❌ ERROR: numbers is moved
 }
