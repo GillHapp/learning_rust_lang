@@ -8,4 +8,14 @@ fn main() {
     }
 
     println!("Got: {:?}", v1)
+
+
+
+    let mut numbers = vec![1, 2, 3];
+
+    for num in numbers.iter_mut() {
+        *num *= 2;
+    }
+
+    println!("{:?}", numbers); // Output: [2, 4, 6]
 }
